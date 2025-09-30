@@ -9,7 +9,9 @@
       modern web development. Discover features like routing, state management,
       API integration, and UI components—all styled with Tailwind CSS.
     </p>
-    <section class="w-full max-w-2xl bg-neutral-50 rounded shadow p-6 mb-6">
+    <section
+      class="w-full max-w-2xl bg-neutral-50 rounded shadow shadow-neutral-100 p-6 mb-6 border-2 border-pink-800"
+    >
       <h2 class="text-2xl font-semibold text-pink-800 mb-2">
         What You Will Learn
       </h2>
@@ -22,7 +24,9 @@
         <li>Reusable UI components with Tailwind CSS</li>
       </ul>
     </section>
-    <section class="w-full max-w-2xl bg-neutral-50 rounded shadow p-6">
+    <section
+      class="w-full max-w-2xl bg-neutral-50 rounded shadow shadow-neutral-100 p-6 border-2 border-pink-800"
+    >
       <h2 class="text-2xl font-semibold text-pink-800 mb-2">
         How to Use This Project
       </h2>
