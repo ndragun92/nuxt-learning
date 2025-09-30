@@ -13,6 +13,7 @@
 <script lang="ts" setup>
 definePageMeta({
   displayName: "Islands",
+  order: 20,
 });
 const name = ref("My name");
 </script>

@@ -5,5 +5,6 @@
 <script lang="ts" setup>
 definePageMeta({
   displayName: "Homepage",
+  order: 0,
 });
 </script>

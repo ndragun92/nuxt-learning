@@ -1,15 +1,16 @@
 <template>
   <h1>Component Types</h1>
-  <hr>
+  <hr />
   <ElServerComponent />
-  <hr>
+  <hr />
   <ElClientComponent />
-  <hr>
+  <hr />
   <ElServerClientComponent />
 </template>
 
 <script lang="ts" setup>
 definePageMeta({
-  displayName: 'Component Types'
-})
+  displayName: "Component Types",
+  order: 10,
+});
 </script>
