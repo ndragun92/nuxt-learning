@@ -104,7 +104,6 @@ export default defineNuxtConfig({
   },
 
   modules: [
-    "nuxt-security", // https://nuxt.com/modules/security
     "@nuxt/eslint",
     "@nuxt/fonts",
     "@pinia/nuxt", // https://pinia.vuejs.org/ssr/nuxt.html

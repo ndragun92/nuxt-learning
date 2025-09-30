@@ -5,7 +5,6 @@ Look at the [Nuxt 4 documentation](https://nuxt.com/docs/getting-started/introdu
 Live preview version [Template](https://template-nuxt3-ndragun92.vercel.app)
 
 ## What does this starter template contain?
-- Nuxt security module
 - ESLint module
 - Strict typeCheck (enabled in development)
 - Pinia
@@ -49,3 +48,11 @@ npm run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+## Topics
+- Rendering modes via config and via page itself
+- Layouts
+- Props / Data between pages/components (Pinia, Composables, Payload...)
+- Plugins
+- Middleware
+- Custom fetch
