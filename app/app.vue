@@ -31,3 +31,11 @@
 <script lang="ts" setup>
 const nuxtApp = useNuxtApp();
 </script>
+
+<style>
+#__nuxt {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+</style>

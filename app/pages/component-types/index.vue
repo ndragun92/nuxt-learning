@@ -7,3 +7,9 @@
   <hr>
   <ElServerClientComponent />
 </template>
+
+<script lang="ts" setup>
+definePageMeta({
+  displayName: 'Component Types'
+})
+</script>
