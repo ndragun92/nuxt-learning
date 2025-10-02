@@ -1,19 +1,19 @@
 <template>
-  <div>
-    Client component - {{ date }}
-    <hr>
-    Count: {{ count }}
-    <button @click="count++">Increment</button>
+  <div class="space-y-4">
+    <div><strong>Current Date:</strong> {{ date }}</div>
+    <UiCard class="flex items-center justify-between">
+      <div><strong>Count: </strong>{{ count }}</div>
+      <UiButton icon="mdi:add" @click="count++"> Increment </UiButton>
+    </UiCard>
   </div>
 </template>
 
 <script lang="ts" setup>
-
 const date = new Date();
 const count = ref(0);
 
-console.log("client date", date);
+console.info("[ClientComponent.client.vue]", date);
 onMounted(() => {
-  console.log('mounted client date', date)
-})
+  console.log("[ClientComponent.client.vue](onMounted)", date);
+});
 </script>
