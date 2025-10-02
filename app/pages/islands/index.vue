@@ -12,7 +12,7 @@
       type="text"
       placeholder="Enter your name"
     />
-    <div class="flex gap-8">
+    <div class="flex-col lg:flex-row flex gap-8">
       <div class="flex-1 space-y-4">
         <UiDivider>Without props</UiDivider>
         <UiInfo v-if="showInfo">
