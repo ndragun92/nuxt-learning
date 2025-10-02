@@ -14,7 +14,10 @@
       <UiLogo />
       <sup class="font-semibold text-pink-800">Workshop</sup>
     </div>
-    <div class="font-semibold flex items-center gap-2">
+    <div
+      v-if="returnCurrentRoute?.meta"
+      class="font-semibold flex items-center gap-2"
+    >
       <button
         class="size-6 flex items-center justify-center bg-neutral-800 border border-pink-800 rounded hover:bg-neutral-700"
         @click="navigateToPreviousRoute"
@@ -31,7 +34,7 @@
         <Icon name="mdi:chevron-right" />
       </button>
     </div>
-    <div class="text-sm">
+    <div v-if="returnCurrentRoute?.meta" class="text-sm">
       {{ returnCurrentRouteIndex + 1 }} of {{ routes.length }}
     </div>
   </header>
@@ -84,11 +87,13 @@ const showSidebar = ref(false);
 const router = useRouter();
 
 const routes = computed(() =>
-  [...router.options.routes].sort((a, b) => {
-    const orderA = (a.meta?.order as number) ?? 0;
-    const orderB = (b.meta?.order as number) ?? 0;
-    return orderA - orderB;
-  }),
+  [...router.options.routes.filter((o) => o.path.split("/").length < 3)].sort(
+    (a, b) => {
+      const orderA = (a.meta?.order as number) ?? 0;
+      const orderB = (b.meta?.order as number) ?? 0;
+      return orderA - orderB;
+    },
+  ),
 );
 
 const route = useRoute();
