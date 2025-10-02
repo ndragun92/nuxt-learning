@@ -24,7 +24,9 @@ const props = defineProps<Props>();
 const date = new Date();
 const count = ref(0);
 
-const myCustomName = computed(() => `My name is ${props.name}`);
+const myCustomName = computed(
+  () => `My name is ${props.name || "Missing Prop"}`,
+);
 
 const { data } = useFetch("https://api.chucknorris.io/jokes/random");
 
