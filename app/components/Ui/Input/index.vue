@@ -3,7 +3,7 @@
     <label
       v-if="props.label"
       :for="props.for"
-      class="block text-sm/6 font-medium text-gray-900"
+      class="block text-sm/6 font-medium text-neutral-900"
     >
       {{ props.label }}
     </label>
@@ -13,7 +13,7 @@
         v-model="model"
         :type="props.type"
         :name="props.for"
-        class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+        class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-neutral-900 outline-1 -outline-offset-1 outline-neutral-300 placeholder:text-neutral-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
         :placeholder="props.placeholder"
       />
     </div>
