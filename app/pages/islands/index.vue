@@ -31,7 +31,7 @@
           <template #description>
             This island receives a prop called <code>name</code> with the value
             of the input field above. Every time the input field changes, the
-            island will re-render with the new value completelly on server.
+            island will re-render with the new value completely on server.
           </template>
         </UiInfo>
         <NuxtIsland name="MyIsland" :props="{ name }" />
