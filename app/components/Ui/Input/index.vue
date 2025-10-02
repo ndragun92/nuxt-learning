@@ -15,6 +15,7 @@
         :name="props.for"
         class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-neutral-900 outline-1 -outline-offset-1 outline-neutral-300 placeholder:text-neutral-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
         :placeholder="props.placeholder"
+        :required="props.required"
       />
     </div>
   </div>
@@ -26,6 +27,7 @@ type Props = {
   label?: string;
   placeholder?: string;
   type?: string;
+  required?: boolean;
 };
 
 const props = withDefaults(defineProps<Props>(), {
@@ -33,6 +35,7 @@ const props = withDefaults(defineProps<Props>(), {
   label: "",
   placeholder: "",
   type: "text",
+  required: false,
 });
 
 const model = defineModel<string>();
