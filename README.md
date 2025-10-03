@@ -50,9 +50,7 @@ npm run preview
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
 
 ## Topics
-- Rendering modes via config and via page itself
 - Layouts
 - Props / Data between pages/components (Pinia, Composables, Payload...)
-- Plugins
 - Middleware
 - Custom fetch

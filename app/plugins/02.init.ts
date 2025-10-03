@@ -1,4 +1,5 @@
 export default defineNuxtPlugin((nuxtApp) => {
+  console.log("[plugin] my-init-plugin start");
   let host: string;
   // Get host in case of server side request
   if (import.meta.env.SSR) {
@@ -10,4 +11,5 @@ export default defineNuxtPlugin((nuxtApp) => {
   // Extract origin and set data in-app context
   nuxtApp.provide("app_origin", origin.origin);
   nuxtApp.provide("app_hostname", origin.hostname);
+  console.log("[plugin] my-init-plugin end");
 });
