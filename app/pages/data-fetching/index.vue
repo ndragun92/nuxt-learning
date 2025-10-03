@@ -48,18 +48,14 @@
         powerful and flexible data fetching solutions for your applications.
       </template>
     </UiInfo>
-    <!--    <UiDivider-->
-    <!--      >Provide/Inject from-->
-    <!--      <code class="bg-red-200 text-red-600 text-xs py-0.5 px-1"-->
-    <!--        >app/plugins/02.init.ts</code-->
-    <!--      ></UiDivider-->
-    <!--    >-->
-    <!--    <UiCard class="flex items-center justify-between">-->
-    <!--      <strong>nuxtApp?.$app_origin: </strong>{{ nuxtApp?.$app_origin }}-->
-    <!--    </UiCard>-->
-    <!--    <UiCard class="flex items-center justify-between">-->
-    <!--      <strong>nuxtApp?.$app_hostname: </strong>{{ nuxtApp?.$app_hostname }}-->
-    <!--    </UiCard>-->
+    <UiDivider>
+      <NuxtLink
+        class="text-pink-800 hover:underline"
+        to="/data-fetching/page-one"
+        >Click here to navigate to example one</NuxtLink
+      >
+    </UiDivider>
+    <UiDivider> WIP: Example two paginated data fetching </UiDivider>
   </section>
 </template>
 
