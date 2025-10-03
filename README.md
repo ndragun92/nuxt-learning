@@ -50,7 +50,7 @@ npm run preview
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
 
 ## Topics
-- Layouts
 - Props / Data between pages/components (Pinia, Composables, Payload...)
 - Middleware
 - Custom fetch
+- Server API and Caching
