@@ -117,6 +117,8 @@ const { data, status } = await useFetch<
   deep: true,
   query: fetchQuery,
   getCachedData: (key, nuxtApp) => {
+    // Current issue with double fetch on initial call
+    // https://github.com/nuxt/nuxt/issues/33383
     console.log("getCachedData", key);
     return nuxtApp.payload.data[key] || nuxtApp.static.data[key];
   },

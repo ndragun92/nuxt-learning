@@ -55,7 +55,13 @@
         >Click here to navigate to example one</NuxtLink
       >
     </UiDivider>
-    <UiDivider> WIP: Example two paginated data fetching </UiDivider>
+    <UiDivider>
+      <NuxtLink
+        class="text-pink-800 hover:underline"
+        to="/data-fetching/pagination"
+        >Click here to navigate to pagination example</NuxtLink
+      >
+    </UiDivider>
   </section>
 </template>
 
