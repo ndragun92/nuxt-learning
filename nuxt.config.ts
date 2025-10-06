@@ -111,7 +111,19 @@ export default defineNuxtConfig({
     "@nuxt/icon",
     "@vueuse/nuxt", // https://vueuse.org/guide/#nuxt
     "@nuxt/image", // https://image.nuxt.com
+    "@nuxt/content",
   ],
+
+  content: {
+    build: {
+      markdown: {
+        highlight: {
+          // Theme used in all color schemes.
+          theme: "github-dark",
+        },
+      },
+    },
+  },
 
   image: {},
 
