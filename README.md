@@ -1,20 +1,6 @@
-# Nuxt 4 Starter Template
+# Nuxt Learning
 
 Look at the [Nuxt 4 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
-
-Live preview version [Template](https://template-nuxt3-ndragun92.vercel.app)
-
-## What does this starter template contain?
-- ESLint module
-- Strict typeCheck (enabled in development)
-- Pinia
-- TailwindCSS
-- Nuxt Icons
-- Vue Use
-- Nuxt Image
-- Loaded a main scss entry file
-- Injected scss utils which are globally available
-- Works with Node 20.x
 
 ## Setup
 
@@ -48,6 +34,3 @@ npm run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
-
-## Topics
-- Server API and Caching

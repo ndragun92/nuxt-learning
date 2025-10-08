@@ -2,13 +2,13 @@
   <NuxtLayout>
     <Html lang="en" :data-route-path="$route?.path">
       <Head>
-        <Title>Template</Title>
+        <Title>Nuxt Learning</Title>
         <Meta name="language" content="en" />
-        <Meta property="og:title" content="Template" />
-        <Meta name="twitter:title" content="Template" />
-        <Meta name="description" content="Template" />
-        <Meta property="og:description" content="Template" />
-        <Meta name="twitter:description" content="Template" />
+        <Meta property="og:title" content="Nuxt Learning" />
+        <Meta name="twitter:title" content="Nuxt Learning" />
+        <Meta name="description" content="Nuxt Learning" />
+        <Meta property="og:description" content="Nuxt - Learn by doing" />
+        <Meta name="twitter:description" content="Nuxt - Learn by doing" />
         <Meta property="og:image" content="/favicon.png" />
         <Meta name="twitter:image" content="/favicon.png" />
         <Meta property="og:site_name" content="/favicon.png" />
