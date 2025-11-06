@@ -58,5 +58,7 @@
 </template>
 
 <script lang="ts" setup>
+import { useToastStore } from "~/store/toastStore";
+
 const toastStore = useToastStore();
 </script>

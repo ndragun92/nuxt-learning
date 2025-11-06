@@ -14,6 +14,7 @@
           <button
             type="button"
             class="relative inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            @click="onAddTodo"
           >
             Add new task
           </button>
@@ -22,29 +23,33 @@
     </div>
     <ul role="list" class="divide-y divide-gray-100">
       <li
-        v-for="n in 10"
-        :key="n"
+        v-for="todo in data?.todos || []"
+        :key="todo.id"
         class="flex items-center justify-between gap-x-6 py-5"
       >
         <div class="min-w-0">
           <div class="flex items-start gap-x-3">
             <p class="text-sm/6 font-semibold text-gray-900">
-              My example task {{ n }}.
+              {{ todo.title }}
             </p>
             <p
               class="mt-0.5 rounded-md bg-green-50 px-1.5 py-0.5 text-xs font-medium text-green-700 inset-ring inset-ring-green-600/20"
             >
-              Complete
+              {{ todo.completed ? "Completed" : "In progress" }}
             </p>
           </div>
           <div class="mt-1 flex items-center gap-x-2 text-xs/5 text-gray-500">
             <p class="whitespace-nowrap">
-              Due on <time datetime="2023-03-17T00:00Z">March 17, 2023</time>
+              Due on
+              <NuxtTime
+                :datetime="todo.dueDate"
+                year="numeric"
+                month="long"
+                day="numeric"
+                hour="2-digit"
+                minute="2-digit"
+              />
             </p>
-            <svg viewBox="0 0 2 2" class="size-0.5 fill-current">
-              <circle r="1" cx="1" cy="1" />
-            </svg>
-            <p class="truncate">Created by Nemanja Dragun</p>
           </div>
         </div>
         <div class="flex flex-none items-center gap-x-4">
@@ -59,8 +64,16 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 definePageMeta({
   middleware: "protected",
 });
+
+const { data } = await useAPI<{
+  todos: TTodo[] | [];
+}>("/api/todos", {
+  key: "todos",
+});
+
+const { onAddTodo } = useTodo();
 </script>

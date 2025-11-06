@@ -103,10 +103,6 @@ export default defineNuxtConfig({
     },
   },
 
-  pinia: {
-    storesDirs: ["./app/store/**"],
-  },
-
   modules: [
     "@nuxt/eslint",
     "@nuxt/fonts",
@@ -115,17 +111,6 @@ export default defineNuxtConfig({
     "@vueuse/nuxt", // https://vueuse.org/guide/#nuxt
     "@nuxt/image", // https://image.nuxt.com
   ],
-
-  content: {
-    build: {
-      markdown: {
-        highlight: {
-          // Theme used in all color schemes.
-          theme: "github-dark",
-        },
-      },
-    },
-  },
 
   image: {},
 

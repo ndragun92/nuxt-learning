@@ -93,6 +93,7 @@
 
 <script setup lang="ts">
 import type { TUser } from "~/composables/useUser";
+import { useToastStore } from "~/store/toastStore";
 
 definePageMeta({
   layout: "auth",
