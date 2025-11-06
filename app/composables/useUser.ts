@@ -7,8 +7,8 @@ export type TUser = {
 
 const user = ref<TUser | null>(null);
 export default function useUser() {
-  const setUser = (u: TUser) => {
-    user.value = u;
+  const setUser = (_user: TUser) => {
+    user.value = _user;
   };
 
   return {

@@ -104,7 +104,9 @@ definePageMeta({
 });
 
 const { setUser } = useUser();
+const { setToken } = useAuth();
 const { handleError } = useErrorHandler();
+const toastStore = useToastStore();
 const router = useRouter();
 
 const form = ref({
@@ -128,11 +130,11 @@ const onSubmit = async () => {
   }
 
   const { token, user } = data;
-  useCookie("token", {
-    maxAge: 60 * 60 * 24 * 30, // 30 days
-    path: "/",
-  }).value = token;
+  setToken(token);
   setUser(user);
+  toastStore.success({
+    text: "Account created successfully",
+  });
   await router.push("/");
 };
 </script>

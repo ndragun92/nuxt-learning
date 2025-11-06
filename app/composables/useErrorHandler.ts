@@ -1,8 +1,8 @@
 export default function useErrorHandler() {
   const toastStore = useToastStore();
-  const handleError = (error: string) => {
+  const handleError = (_error: string) => {
     toastStore.error({
-      text: error || "Something went wrong",
+      text: _error || "Something went wrong",
     });
   };
 
