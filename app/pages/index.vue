@@ -11,13 +11,17 @@
           </p>
         </div>
         <div class="mt-4 ml-4 shrink-0">
-          <button
-            type="button"
-            class="relative inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            @click="onAddTodo"
-          >
-            Add new task
-          </button>
+          <LazyElDrawer button-text="Add new task">
+            <template #action="slotProps">
+              <button
+                type="button"
+                class="relative inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                @click="slotProps.toggle()"
+              >
+                Add new task
+              </button>
+            </template>
+          </LazyElDrawer>
         </div>
       </div>
     </div>
@@ -78,5 +82,5 @@ const { data } = await useAPI<{
   deep: true, // We have to make sure that the data is deep reactive so that we can do optimistic updated
 });
 
-const { onAddTodo, onToggleCompletedState } = useTodo();
+const { onToggleCompletedState } = useTodo();
 </script>
