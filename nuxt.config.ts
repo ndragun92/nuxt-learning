@@ -32,6 +32,9 @@ export default defineNuxtConfig({
   },
 
   nitro: {
+    experimental: {
+      database: true,
+    },
     // compressPublicAssets: true,
     routeRules: {
       // "/_nuxt/**": { headers: { "cache-control": "max-age=31536000" } }, // Set generated files cache to 1 year
@@ -111,7 +114,6 @@ export default defineNuxtConfig({
     "@nuxt/icon",
     "@vueuse/nuxt", // https://vueuse.org/guide/#nuxt
     "@nuxt/image", // https://image.nuxt.com
-    "@nuxt/content",
   ],
 
   content: {

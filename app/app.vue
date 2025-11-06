@@ -26,6 +26,7 @@
     <NuxtRouteAnnouncer />
     <NuxtPage />
   </NuxtLayout>
+  <LazyElToast />
 </template>
 
 <script lang="ts" setup>
