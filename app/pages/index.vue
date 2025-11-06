@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
+  <div class="container max-w-4xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
     <div class="border-b border-gray-200 py-5">
       <div
         class="-mt-4 -ml-4 flex flex-wrap items-center justify-between sm:flex-nowrap"
@@ -53,11 +53,13 @@
           </div>
         </div>
         <div class="flex flex-none items-center gap-x-4">
-          <a
-            href="#"
-            class="hidden rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-xs inset-ring inset-ring-gray-300 hover:bg-gray-50 sm:block"
-            >Mark as completed</a
+          <button
+            type="button"
+            class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-xs inset-ring inset-ring-gray-300 hover:bg-gray-50 sm:block"
+            @click="onToggleCompletedState(todo.id, todo)"
           >
+            Mark as {{ todo.completed ? "in progress" : "completed" }}
+          </button>
         </div>
       </li>
     </ul>
@@ -73,7 +75,8 @@ const { data } = await useAPI<{
   todos: TTodo[] | [];
 }>("/api/todos", {
   key: "todos",
+  deep: true, // We have to make sure that the data is deep reactive so that we can do optimistic updated
 });
 
-const { onAddTodo } = useTodo();
+const { onAddTodo, onToggleCompletedState } = useTodo();
 </script>

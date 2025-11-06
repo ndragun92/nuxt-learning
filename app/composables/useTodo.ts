@@ -42,5 +42,32 @@ export default function useTodo() {
     await refreshNuxtData("todos");
   };
 
-  return { onAddTodo };
+  const onToggleCompletedState = async (_id: TTodo["id"], _todo: TTodo) => {
+    const newState = !_todo.completed;
+    const [error] = await catchError(
+      $api<{ todos: TTodo[] }>(`/api/todos/${_id}`, {
+        method: "PATCH",
+        body: {
+          completed: newState,
+        },
+      }),
+    );
+    if (error) {
+      handleError(error._message);
+      return;
+    }
+
+    toastStore.success({
+      text: `Successfully marked task as ${newState ? "completed" : "incomplete"}`,
+    });
+
+    // If _todo is present then make optimistic update
+    if (_todo) {
+      _todo.completed = newState;
+    } else {
+      await refreshNuxtData("todos");
+    }
+  };
+
+  return { onAddTodo, onToggleCompletedState };
 }
