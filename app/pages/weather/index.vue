@@ -225,7 +225,13 @@
                 class="min-w-[96px] flex-shrink-0 rounded-xl bg-gradient-to-b from-white to-slate-50 p-3 text-center shadow transform transition-transform hover:scale-105"
               >
                 <div class="text-xs text-slate-500">
-                  {{ formatHour(h.time) }}
+                  <NuxtTime
+                    v-if="h?.time"
+                    :datetime="h.time"
+                    hour="2-digit"
+                    minute="2-digit"
+                  />
+                  <template v-else>N/A</template>
                 </div>
                 <div class="mt-2 text-lg font-semibold text-slate-800">
                   {{
@@ -311,17 +317,6 @@ const payload = computed(() => data?.value ?? null);
 const weather = computed(() => payload.value?.weather ?? null);
 const current = computed(() => weather.value?.current ?? null);
 const hourly = computed(() => weather.value?.hourly ?? null);
-
-const formatHour = (t?: string) => {
-  if (!t) return "";
-  try {
-    const d = new Date(t);
-    return d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-  } catch (e: unknown) {
-    console.error("Error formatting time:", e);
-    return t;
-  }
-};
 
 const hourlyItems = computed(() => {
   if (!hourly.value?.time || !hourly.value?.temperature_2m) return [];
