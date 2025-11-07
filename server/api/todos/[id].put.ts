@@ -17,7 +17,7 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 403, message: "Forbidden" });
 
   const updatedAt = new Date().toISOString();
-  await db.sql`UPDATE todos SET title = ${title || ""}, description = ${description || ""}, completed = ${completed ? 1 : 0}, dueDate = ${dueDate || null}, priority = ${priority || 0}, updatedAt = ${updatedAt} WHERE id = ${id}`;
+  await db.sql`UPDATE todos SET title = ${title || ""}, description = ${description || ""}, completed = ${completed ? 1 : 0}, dueDate = ${dueDate || null}, priority = ${priority ? 1 : 0}, updatedAt = ${updatedAt} WHERE id = ${id}`;
 
   const result = await db.sql`SELECT * FROM todos WHERE id = ${id}`;
   const todo = result && result.rows ? result.rows[0] : null;

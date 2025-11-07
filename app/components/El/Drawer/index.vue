@@ -54,5 +54,26 @@ import {
   TransitionRoot,
 } from "@headlessui/vue";
 
+type Props = {
+  openState?: boolean;
+};
+
+const props = defineProps<Props>();
+
+const returnOpenState = computed(() => props.openState);
+
+watch(returnOpenState, (_state) => {
+  if (_state === undefined) return;
+  open.value = _state;
+});
+
 const open = ref(false);
+
+const emit = defineEmits(["emitClose"]);
+
+watch(open, (_state) => {
+  if (!_state) {
+    emit("emitClose", _state);
+  }
+});
 </script>

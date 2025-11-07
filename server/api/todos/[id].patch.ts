@@ -27,7 +27,7 @@ export default defineEventHandler(async (event) => {
     await db.sql`UPDATE todos SET dueDate = ${body.dueDate} WHERE id = ${id}`;
   }
   if (Object.prototype.hasOwnProperty.call(body, "priority")) {
-    await db.sql`UPDATE todos SET priority = ${body.priority} WHERE id = ${id}`;
+    await db.sql`UPDATE todos SET priority = ${body.priority ? 1 : 0} WHERE id = ${id}`;
   }
 
   const updatedAt = new Date().toISOString();

@@ -5,7 +5,7 @@ export type TTodo = {
   title: string;
   description: string;
   dueDate: string;
-  priority: number;
+  priority: boolean;
   completed: boolean;
   createdAt: string;
   updatedAt: string;
@@ -37,6 +37,28 @@ export default function useTodo() {
     await refreshNuxtData("todos");
   };
 
+  const onEditTodo = async (
+    _id: TTodo["id"],
+    _payload: Pick<TTodo, "title" | "description" | "dueDate" | "priority">,
+  ) => {
+    const [error] = await catchError(
+      $api<{ todos: TTodo[] }>(`/api/todos/${_id}`, {
+        method: "PATCH",
+        body: _payload,
+      }),
+    );
+
+    if (error) {
+      handleError(error._message);
+      return;
+    }
+
+    toastStore.success({
+      text: "Successfully modified task",
+    });
+    await refreshNuxtData("todos");
+  };
+
   const onToggleCompletedState = async (_id: TTodo["id"], _todo: TTodo) => {
     const newState = !_todo.completed;
     const [error] = await catchError(
@@ -64,5 +86,38 @@ export default function useTodo() {
     }
   };
 
-  return { onAddTodo, onToggleCompletedState };
+  const onDeleteTodo = async (_id: TTodo["id"]) => {
+    const [error] = await catchError(
+      $api<{ todos: TTodo[] }>(`/api/todos/${_id}`, {
+        method: "DELETE",
+      }),
+    );
+    if (error) {
+      handleError(error._message);
+      return;
+    }
+    toastStore.success({
+      text: "Successfully deleted task",
+    });
+    await refreshNuxtData("todos");
+  };
+
+  const onGetTodo = async (_id: TTodo["id"]) => {
+    const [error, data] = await catchError(
+      $api<{ todo: TTodo }>(`/api/todos/${_id}`),
+    );
+    if (error) {
+      handleError(error._message);
+      return;
+    }
+    return data.todo;
+  };
+
+  return {
+    onAddTodo,
+    onEditTodo,
+    onDeleteTodo,
+    onGetTodo,
+    onToggleCompletedState,
+  };
 }

@@ -14,7 +14,10 @@
         </p>
       </div>
       <div class="mt-4 ml-4 shrink-0">
-        <ElTodoManage />
+        <ElTodoManage
+          :edit-item-id="editItemId"
+          @emit-close="editItemId = null"
+        />
       </div>
     </div>
   </div>
@@ -33,7 +36,12 @@
     ></div>
   </div>
   <ul role="list" class="divide-y divide-gray-100">
-    <ElTodoListItem v-for="todo in todos" :key="todo.id" :todo="todo" />
+    <ElTodoListItem
+      v-for="todo in todos"
+      :key="todo.id"
+      :todo="todo"
+      @emit-edit-todo="onEditTodo"
+    />
   </ul>
   <LazyElModal v-model:open="showConfetti">
     <template #icon>
@@ -70,7 +78,12 @@ const showConfetti = ref(false);
 watch(returnPercentageCount, (_percentage) => {
   if (_percentage >= 100) {
     showConfetti.value = true;
-    // TODO: Add confetti animation
   }
 });
+
+const editItemId = ref<TTodo["id"] | null>(null);
+
+const onEditTodo = (_id: TTodo["id"]) => {
+  editItemId.value = _id;
+};
 </script>
