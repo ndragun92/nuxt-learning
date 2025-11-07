@@ -44,7 +44,7 @@
   <ul role="list" class="divide-y divide-gray-100">
     <ElTodoListItem v-for="todo in todos" :key="todo.id" :todo="todo" />
   </ul>
-  <ElModal v-model:open="showConfetti">
+  <LazyElModal v-model:open="showConfetti">
     <template #icon>
       <Icon
         name="noto:confetti-ball"
@@ -59,7 +59,7 @@
         You have successfully completed all your tasks!
       </p>
     </template>
-  </ElModal>
+  </LazyElModal>
 </template>
 
 <script setup lang="ts">
