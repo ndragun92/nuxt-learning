@@ -103,6 +103,7 @@ definePageMeta({
 const { setUser } = useUser();
 const { setToken } = useAuth();
 const { handleError } = useErrorHandler();
+const { $api } = useNuxtApp();
 const toastStore = useToastStore();
 const router = useRouter();
 
@@ -115,7 +116,7 @@ const form = ref({
 
 const onSubmit = async () => {
   const [error, data] = await catchError(
-    $fetch<{ token: string; user: TUser }>("/api/auth/register", {
+    $api<{ token: string; user: TUser }>("/api/auth/register", {
       method: "POST",
       body: toRaw(form.value),
     }),

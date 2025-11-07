@@ -17,6 +17,7 @@ export function getUserIdFromToken(token: string | undefined) {
 export async function getUserFromEvent(event: any) {
   const authHeader =
     getHeader(event, "authorization") || getHeader(event, "x-token");
+  console.log("authHeader", authHeader);
   if (!authHeader)
     throw createError({ statusCode: 401, message: "Unauthorized - no token" });
   const token = String(authHeader).startsWith("Bearer ")

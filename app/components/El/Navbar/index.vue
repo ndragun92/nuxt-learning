@@ -4,19 +4,33 @@
       aria-label="Global"
       class="mx-auto flex max-w-7xl items-center justify-between gap-x-6 p-6 lg:px-8"
     >
-      <div class="flex lg:flex-1">
-        <a href="#" class="-m-1.5 p-1.5">
+      <div class="flex lg:flex-1 items-center gap-x-6">
+        <NuxtLink
+          :to="{
+            name: 'index',
+          }"
+          class="-m-1.5 p-1.5"
+        >
           <span class="sr-only">Your Company</span>
           <img
             src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
             alt=""
             class="h-8 w-auto"
           />
-        </a>
+        </NuxtLink>
+        <span class="text-sm"
+          >Welcome, <strong>{{ fullName }}</strong></span
+        >
       </div>
-      <div class="hidden lg:flex lg:gap-x-12">
+      <div class="flex lg:gap-x-12">
+        <NuxtLink
+          :to="{
+            name: 'profile',
+          }"
+          class="text-sm/6 font-semibold text-gray-900"
+          >Profile</NuxtLink
+        >
         <a href="#" class="text-sm/6 font-semibold text-gray-900">Stats</a>
-        <a href="#" class="text-sm/6 font-semibold text-gray-900">Profile</a>
       </div>
       <div class="flex flex-1 items-center justify-end gap-x-6">
         <button
@@ -33,4 +47,5 @@
 
 <script setup lang="ts">
 const { onLogout } = useAuth();
+const { fullName } = useUser();
 </script>

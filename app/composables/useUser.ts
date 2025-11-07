@@ -11,8 +11,13 @@ export default function useUser() {
     user.value = _user;
   };
 
+  const fullName = computed(() => {
+    return `${user.value?.firstName} ${user.value?.lastName}`;
+  });
+
   return {
     user,
+    fullName,
     setUser,
   };
 }
