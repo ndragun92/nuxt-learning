@@ -11,6 +11,12 @@
           {{ props.todo.title }}
         </p>
         <p
+          v-if="props.todo.priority"
+          class="text-red-700 inset-ring-red-600/20 bg-red-50 mt-0.5 rounded-md px-1.5 py-0.5 text-xs font-medium inset-ring"
+        >
+          High priority
+        </p>
+        <p
           class="mt-0.5 rounded-md px-1.5 py-0.5 text-xs font-medium inset-ring"
           :class="{
             'text-green-700 inset-ring-green-600/20 bg-green-50':
