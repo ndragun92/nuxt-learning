@@ -9,7 +9,8 @@
           A list of all your tasks in progress and completed tasks.
         </p>
         <p class="mt-1 text-sm text-gray-400">
-          Completed: {{ returnCompletedTasksCount }} of {{ todos.length }} tasks
+          Completed {{ returnCompletedTasksCount }} of {{ todos.length }}
+          {{ pluralize("task", todos.length) }}
         </p>
       </div>
       <div class="mt-4 ml-4 shrink-0">
@@ -63,6 +64,8 @@
 </template>
 
 <script setup lang="ts">
+import { pluralize } from "~/utils/helper.utils";
+
 const todos = useNuxtData("todos")?.data?.value?.todos || [];
 
 const returnCompletedTasksCount = computed(
