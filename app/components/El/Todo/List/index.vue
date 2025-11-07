@@ -14,17 +14,7 @@
         </p>
       </div>
       <div class="mt-4 ml-4 shrink-0">
-        <ElDrawer button-text="Add new task">
-          <template #action="slotProps">
-            <button
-              type="button"
-              class="relative inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              @click="slotProps.toggle()"
-            >
-              Add new task
-            </button>
-          </template>
-        </ElDrawer>
+        <ElTodoManage />
       </div>
     </div>
   </div>
@@ -66,14 +56,14 @@
 <script setup lang="ts">
 import { pluralize } from "~/utils/helper.utils";
 
-const todos = useNuxtData("todos")?.data?.value?.todos || [];
+const todos = computed(() => useNuxtData("todos")?.data?.value?.todos || []);
 
 const returnCompletedTasksCount = computed(
-  () => todos.filter((_task: TTodo) => _task.completed).length,
+  () => todos.value.filter((_task: TTodo) => _task.completed).length,
 );
 
 const returnPercentageCount = computed(() => {
-  return (returnCompletedTasksCount.value / todos.length) * 100;
+  return (returnCompletedTasksCount.value / todos.value.length) * 100;
 });
 
 const showConfetti = ref(false);

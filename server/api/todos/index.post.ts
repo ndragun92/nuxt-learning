@@ -13,7 +13,7 @@ export default defineEventHandler(async (event) => {
   const createdAt = new Date().toISOString();
   const updatedAt = createdAt;
 
-  await db.sql`INSERT INTO todos VALUES (${id}, ${user.id}, ${title}, ${description || ""}, ${completed}, ${dueDate || null}, ${priority || 0}, ${createdAt}, ${updatedAt})`;
+  await db.sql`INSERT INTO todos VALUES (${id}, ${user.id}, ${title}, ${description || ""}, ${completed}, ${dueDate || null}, ${priority ? 1 : 0}, ${createdAt}, ${updatedAt})`;
 
   const result = await db.sql`SELECT * FROM todos WHERE id = ${id}`;
   const todo = result && result.rows ? result.rows[0] : null;

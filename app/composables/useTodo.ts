@@ -16,18 +16,13 @@ export default function useTodo() {
   const { $api } = useNuxtApp();
   const toastStore = useToastStore();
 
-  const onAddTodo = async () => {
+  const onAddTodo = async (
+    _payload: Pick<TTodo, "title" | "description" | "dueDate" | "priority">,
+  ) => {
     const [error] = await catchError(
       $api<{ todos: TTodo[] }>("/api/todos", {
         method: "POST",
-        body: {
-          title: "Test",
-          description: "Test",
-          dueDate: "2024-01-01",
-          priority: 1,
-          createdAt: new Date().toISOString(),
-          updatedAt: new Date().toISOString(),
-        },
+        body: _payload,
       }),
     );
 
