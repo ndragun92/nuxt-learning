@@ -30,7 +30,17 @@
                 }}<span class="text-xl align-super">°C</span>
               </div>
               <div class="text-sm text-slate-600">
-                As of {{ formatDate(current?.time) }}
+                As of
+                <NuxtTime
+                  v-if="current?.time"
+                  :datetime="current.time"
+                  year="numeric"
+                  month="short"
+                  day="numeric"
+                  hour="2-digit"
+                  minute="2-digit"
+                />
+                <template v-else>N/A</template>
               </div>
             </div>
 
@@ -85,7 +95,16 @@
         <div class="rounded-lg bg-white p-4 shadow">
           <div class="text-xs text-slate-500">Data generated</div>
           <div class="mt-1 font-medium text-slate-800">
-            {{ payload?.cachedAt ? formatDate(payload.cachedAt) : "—" }}
+            <NuxtTime
+              v-if="payload?.cachedAt"
+              :datetime="payload.cachedAt"
+              year="numeric"
+              month="short"
+              day="numeric"
+              hour="2-digit"
+              minute="2-digit"
+            />
+            <template v-else>-</template>
           </div>
         </div>
         <div class="rounded-lg bg-white p-4 shadow">
@@ -174,7 +193,7 @@ const weather = computed(() => payload.value?.weather ?? null);
 const current = computed(() => weather.value?.current ?? null);
 const hourly = computed(() => weather.value?.hourly ?? null);
 
-function formatHour(t?: string) {
+const formatHour = (t?: string) => {
   if (!t) return "";
   try {
     const d = new Date(t);
@@ -183,17 +202,7 @@ function formatHour(t?: string) {
     console.error("Error formatting time:", e);
     return t;
   }
-}
-function formatDate(t?: string) {
-  if (!t) return "";
-  try {
-    const d = new Date(t);
-    return d.toLocaleString();
-  } catch (e: unknown) {
-    console.error("Error formatting date:", e);
-    return t;
-  }
-}
+};
 
 const hourlyItems = computed(() => {
   if (!hourly.value?.time || !hourly.value?.temperature_2m) return [];
