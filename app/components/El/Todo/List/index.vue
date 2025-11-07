@@ -44,6 +44,22 @@
   <ul role="list" class="divide-y divide-gray-100">
     <ElTodoListItem v-for="todo in todos" :key="todo.id" :todo="todo" />
   </ul>
+  <ElModal v-model:open="showConfetti">
+    <template #icon>
+      <Icon
+        name="noto:confetti-ball"
+        class="size-12"
+        size="48"
+        aria-hidden="true"
+      />
+    </template>
+    <template #title>Congratulations</template>
+    <template #body>
+      <p class="text-sm text-gray-500">
+        You have successfully completed all your tasks!
+      </p>
+    </template>
+  </ElModal>
 </template>
 
 <script setup lang="ts">
@@ -57,8 +73,10 @@ const returnPercentageCount = computed(() => {
   return (returnCompletedTasksCount.value / todos.length) * 100;
 });
 
+const showConfetti = ref(false);
 watch(returnPercentageCount, (_percentage) => {
   if (_percentage >= 100) {
+    showConfetti.value = true;
     // TODO: Add confetti animation
   }
 });

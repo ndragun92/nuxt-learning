@@ -43,7 +43,7 @@
         :class="{
           'inset-ring-green-600 bg-green-500 hover:bg-green-700':
             !props.todo.completed,
-          'inset-ring-yellow-600 bg-yellow-500 hover:bg-yellow-700':
+          'inset-ring-yellow-100 bg-transparent text-yellow-500 hover:bg-yellow-50':
             props.todo.completed,
         }"
         @click="onToggleCompletedState(props.todo.id, props.todo)"
