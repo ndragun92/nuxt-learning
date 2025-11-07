@@ -1,5 +1,4 @@
 export default defineEventHandler(async (event) => {
-  const { getUserFromEvent } = await import("../../utils/auth");
   const { user } = await getUserFromEvent(event);
 
   const body = await readBody(event);

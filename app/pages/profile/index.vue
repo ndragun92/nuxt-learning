@@ -90,6 +90,10 @@
 import type { TUser } from "~/composables/useUser";
 import { useToastStore } from "~/store/toastStore";
 
+definePageMeta({
+  middleware: "protected", // This will make sure that the user is authenticated before accessing this page
+});
+
 const { user } = useUser();
 
 const form = ref({

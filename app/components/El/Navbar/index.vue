@@ -22,15 +22,23 @@
           >Welcome, <strong>{{ fullName }}</strong></span
         >
       </div>
-      <div class="flex lg:gap-x-12">
+      <div class="flex space-x-6">
         <NuxtLink
           :to="{
             name: 'profile',
           }"
+          exact-active-class="text-indigo-600"
           class="text-sm/6 font-semibold text-gray-900"
           >Profile</NuxtLink
         >
-        <a href="#" class="text-sm/6 font-semibold text-gray-900">Stats</a>
+        <NuxtLink
+          :to="{
+            name: 'weather',
+          }"
+          exact-active-class="text-indigo-600"
+          class="text-sm/6 font-semibold text-gray-900"
+          >Weather</NuxtLink
+        >
       </div>
       <div class="flex flex-1 items-center justify-end gap-x-6">
         <button
