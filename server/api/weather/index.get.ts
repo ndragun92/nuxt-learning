@@ -5,7 +5,7 @@ export default defineEventHandler(async (event) => {
   const cacheKey = `weather-user-${user.id}`;
 
   // Try to retrieve from a cache
-  const cached = await useStorage("cache").getItem(cacheKey);
+  const cached = await useStorage<TWeatherPayload>("cache").getItem(cacheKey);
   if (cached)
     return {
       _cached: true,
@@ -14,7 +14,7 @@ export default defineEventHandler(async (event) => {
 
   // Otherwise fetch and cache
   try {
-    const response = await $fetch(
+    const response = await $fetch<TWeatherPayload>(
       "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m",
     );
     const result = {
