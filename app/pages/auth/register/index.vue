@@ -97,11 +97,7 @@ import { useToastStore } from "~/store/toastStore";
 
 definePageMeta({
   layout: "auth",
-  middleware: () => {
-    if (useCookie("token").value) {
-      return navigateTo("/");
-    }
-  },
+  middleware: "authenticated",
 });
 
 const { setUser } = useUser();
