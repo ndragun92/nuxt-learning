@@ -1,10 +1,10 @@
 <template>
   <div>Test</div>
   <pre>
-    {{ data }}
+    {{ localData }}
   </pre>
 </template>
 
 <script lang="ts" setup>
-const { data } = useBuilder();
+const { localData } = useBuilder();
 </script>
